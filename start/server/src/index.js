@@ -9,6 +9,16 @@ const UserAPI = require('./datasources/user');
 const store = createStore();
 const isEmail = require('isemail');
 
+var express = require('express')
+var cors = require('cors')
+var app = express()
+
+var corsOptions = {
+  credentials: true // <-- REQUIRED backend setting
+};
+
+app.use(cors(corsOptions))
+
 const server = new ApolloServer({
   context: async ({ req }) => {
     // simple auth check on every request

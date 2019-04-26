@@ -1,15 +1,13 @@
-const { RESTDataSource } = require('apollo-datasource-rest');
+const axios = require('axios');
 
-class LaunchAPI extends RESTDataSource {
-    constructor(){
-        super();
-        this.baseURL = 'https://api.spacexdata.com/v2/';
-    }
+const baseURL = 'https://api.spacexdata.com/v2/launches';
+
+class LaunchAPI  {
 
     async getAllLaunches() {
-        const response = await this.get('launches');
-        return Array.isArray(response)
-          ? response.map(launch => this.launchReducer(launch))
+      const resp = await axios.get(baseURL);
+        return Array.isArray(resp.data)
+          ? resp.data.map(launch => this.launchReducer(launch))
           : [];
       }
     
@@ -32,8 +30,8 @@ class LaunchAPI extends RESTDataSource {
     }
 
     async getLaunchById({ launchId }) {
-        const response = await this.get('launches', { flight_number: launchId });
-        return this.launchReducer(response[0]);
+        const response = await axios.get(baseURL, { flight_number: launchId });
+        return this.launchReducer(response.data[0]);
       }
       
     getLaunchesByIds({ launchIds }) {

@@ -14,7 +14,7 @@ module.exports = {
         });
   
         return {
-          launchesarray: launches,
+          launches,
           cursor: launches.length ? launches[launches.length - 1].cursor : null,
           // if the cursor of the end of the paginated results is the same as the
           // last item in _all_ results, then there are no more results after this

@@ -24,7 +24,7 @@ const typeDefs = gql`
     type LaunchConnection { # add this below the Query type as an additional type.
         cursor: String!
         hasMore: Boolean!
-        launchesarray: [Launch]!
+        launches: [Launch]!
     }
     
     type Launch {

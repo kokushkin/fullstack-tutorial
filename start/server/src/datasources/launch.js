@@ -1,8 +1,9 @@
 const axios = require('axios');
+const { DataSource } = require('apollo-datasource');
 
 const baseURL = 'https://api.spacexdata.com/v2/launches';
 
-class LaunchAPI  {
+class LaunchAPI extends DataSource {
 
     async getAllLaunches() {
       const resp = await axios.get(baseURL);

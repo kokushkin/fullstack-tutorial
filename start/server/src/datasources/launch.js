@@ -32,7 +32,7 @@ class LaunchAPI extends DataSource {
     }
 
     async getLaunchById({ launchId }) {
-        const response = await axios.get(baseURL, { flight_number: launchId });
+        const response = await axios.get(baseURL, {params: { flight_number: launchId }});
         return this.launchReducer(response.data[0]);
       }
       

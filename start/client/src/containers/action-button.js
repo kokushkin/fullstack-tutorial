@@ -44,7 +44,6 @@ export default function ActionButton({ isBooked, id, isInCart }) {
           <div>
             <Button
               onClick={mutate}
-              isBooked={isBooked}
               data-testid={'action-button'}
             >
               {isBooked
